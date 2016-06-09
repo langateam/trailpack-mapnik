@@ -2,8 +2,6 @@
 
 const Trailpack = require('trailpack')
 const Tilelive = require('tilelive')
-const tlMapnik = require('tilelive-mapnik')
-const tlBridge = require('tilelive-bridge')
 
 module.exports = class MapnikTrailpack extends Trailpack {
 
@@ -15,17 +13,38 @@ module.exports = class MapnikTrailpack extends Trailpack {
   }
 
   /**
-   * TODO document method
+   * Register tilelive protocols
    */
   configure () {
-
+    this.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
   }
 
   /**
    * Setup tilelive, connect to datasources.
    */
   initialize () {
+    const maps = this.app.config.mapnik.maps
+    const sources = Object.keys(maps).map(mapName => {
+      const protocol = maps[mapName]
 
+      return new Promise((resolve, reject) => {
+        Tilelive.load(protocol, (err, source) => {
+          if (err) return reject(err)
+
+          resolve({
+            name: mapName,
+            source
+          })
+        })
+      })
+    })
+
+    return Promise.all(sources)
+      .then(sources => {
+        sources.forEach(source => {
+          this[source.mapName] = source.source
+        })
+      })
   }
 
   constructor (app) {
@@ -36,4 +55,3 @@ module.exports = class MapnikTrailpack extends Trailpack {
     })
   }
 }
-

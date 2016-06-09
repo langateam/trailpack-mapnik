@@ -33,13 +33,19 @@ module.exports = {
    * Define paths to mapnik map configs
    */
   maps: {
-    raster: {
-      basemap: path.resolve(__dirname, 'basemap.xml')
+    basemap: {
+      pathname: path.resolve(__dirname, 'basemap.xml')
     },
-    vector: {
-      parcel_overlay: path.resolve(__dirname, 'parcel_overlay.xml')
+    someOverlay: {
+      pathname: path.resolve(__dirname, 'vector_overlay.xml')
     }
-  }
+  },
+  /**
+   * Additional Tilelive protocols (e.g. vector)
+   */
+  protocols: [
+    require('tilelive-additionalplugin')
+  ]
 }
 ```
 
