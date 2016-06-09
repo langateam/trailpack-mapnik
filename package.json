@@ -1,0 +1,48 @@
+{
+  "name": "trailpack-mapnik",
+  "version": "0.0.0",
+  "description": "Mapnik Tile Server with Trails.js",
+  "homepage": "http://trailsjs.io",
+  "author": {
+    "name": "Langa Team",
+    "email": "hello@langa.io",
+    "url": "https://github.com/langateam"
+  },
+  "main": "index.js",
+  "keywords": [
+    "trailpack",
+    "trails",
+    "trailjs",
+    "mapnik",
+    "tilelive",
+    "mapserver",
+    "geoserver",
+    "tiles",
+    "gis",
+    "postgis",
+    "gdal"
+  ],
+  "dependencies": {
+    "trailpack": "latest"
+  },
+  "devDependencies": {
+    "lodash": "^4.11.1",
+    "trails": "latest",
+    "eslint": "^2.4",
+    "eslint-config-trails": "^1.0.4",
+    "mocha": "^2.4.5",
+    "smokesignals": "^1.0.9",
+    "trailpack-core": "^1.0.0-beta-6"
+  },
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  },
+  "repository": "trailsjs/trailpack-mapnik",
+  "license": "MIT"
+}
