@@ -57,4 +57,3 @@ module.exports = {
 [daviddm-url]: https://david-dm.org//trailpack-mapnik
 [codeclimate-image]: https://img.shields.io/codeclimate/github//trailpack-mapnik.svg?style=flat-square
 [codeclimate-url]: https://codeclimate.com/github//trailpack-mapnik
-
