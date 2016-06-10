@@ -20,7 +20,9 @@
     "tiles",
     "gis",
     "postgis",
-    "gdal"
+    "gdal",
+    "map",
+    "wms"
   ],
   "dependencies": {
     "tilelive-bridge": "^2.3.1",
