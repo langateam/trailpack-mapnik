@@ -20,6 +20,8 @@ module.exports = class MapnikTrailpack extends Trailpack {
   configure () {
     this.log.debug('Registering tilelive protocols...')
     this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
+
+    this.sources = { }
   }
 
   /**
@@ -42,7 +44,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
     return Promise.all(sources)
       .then(sources => {
         sources.forEach(source => {
-          this[source.mapName] = source.source
+          this.sources[source.mapName] = source.source
         })
       })
   }
