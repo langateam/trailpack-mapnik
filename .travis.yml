@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 6
+
+notifications:
+  email: false
+
+deploy:
+  provider: npm
+  email: hello@langa.io
+  api_key:
+    secure: VqYkbkezExYsY3WSK3dcGTJjfENncGT/OrN9hgWy2SUxnJ2JFs2m+fgg/YEkU0F8eu4y9+R8rYRwwnxjR832Q7+fShcPAbyLO8iIxxgnl8BuRJiOeYhBWYPLDM5mmy5fKFl+1wMnZMkv0ccOIh7HuZqHLOheY1tQ1bv8TpmslG7zeTutWPGwVHzDtiRni3ssEG3scnH+tqHGEg5c7MAP+BAKWH5VnbXmeHj3QsuKIbQ9B95GbECamH+IVnjpXkIeSTlI0B+ClWy9bMxaxrZtQA/x9FnZVFLRpLKvsP4/la19QRZ4yh+6G2vlGonbEX5v9ykASGZYzOAqWr0RvTyTiZyxoS66feI1Cuzc5/z6Jwhi/PuHQu3Bpss5xGUKGV0xNJJBvE57Fvm5kiZZWwfVr7SjsRhWZ/QI59YCmOt5EU0/n/sxJPS8hVmWjXF/AmTiSnWxhs5ulL+6gEZtonKFYxeSK+BpIHVIMzwRmDWzOCjR0q7X0FY/0PGPB1jPZCNiqwGZe9aQSIno3Kdc/JMN0YWhrHTVIXS5FebaPPDuYsD6XH5JEnStKLfIVzaPj8eH7Q3+xLpcyuOtViS6ie4KxabCuPL3MwCvrJFe/bHlPToqdfEUqgJxnCJFjdfPOiLpyyPkZhGYpXXjfwKz271tRD0UvLaxhC5SGMGI6iYbK7E=
+  on:
+    tags: true
+    repo: langateam/trailpack-mapnik
+    node: 6
