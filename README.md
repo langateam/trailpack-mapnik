@@ -51,9 +51,9 @@ module.exports = {
 
 [npm-image]: https://img.shields.io/npm/v/trailpack-mapnik.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trailpack-mapnik
-[ci-image]: https://img.shields.io/travis//trailpack-mapnik/master.svg?style=flat-square
-[ci-url]: https://travis-ci.org//trailpack-mapnik
-[daviddm-image]: http://img.shields.io/david//trailpack-mapnik.svg?style=flat-square
-[daviddm-url]: https://david-dm.org//trailpack-mapnik
-[codeclimate-image]: https://img.shields.io/codeclimate/github//trailpack-mapnik.svg?style=flat-square
-[codeclimate-url]: https://codeclimate.com/github//trailpack-mapnik
+[ci-image]: https://img.shields.io/travis/langateam/trailpack-mapnik/master.svg?style=flat-square
+[ci-url]: https://travis-ci.org/langateam/trailpack-mapnik
+[daviddm-image]: http://img.shields.io/david/langateam/trailpack-mapnik.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/langateam/trailpack-mapnik
+[codeclimate-image]: https://img.shields.io/codeclimate/github/langateam/trailpack-mapnik.svg?style=flat-square
+[codeclimate-url]: https://codeclimate.com/github/langateam/trailpack-mapnik
