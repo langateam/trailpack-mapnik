@@ -33,20 +33,17 @@ module.exports = class MapnikTrailpack extends Trailpack {
       const protocol = maps[name]
 
       return new Promise((resolve, reject) => {
+        this.log.debug('Loading tilelive map sources...')
         Tilelive.load(protocol, (err, source) => {
           if (err) return reject(err)
 
+          this.sources[name] = source
           resolve({ name, source })
         })
       })
     })
 
     return Promise.all(sources)
-      .then(sources => {
-        sources.forEach(source => {
-          this.sources[source.mapName] = source.source
-        })
-      })
   }
 
   get tl () {
