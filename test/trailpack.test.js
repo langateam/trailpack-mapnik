@@ -5,7 +5,7 @@ const assert = require('assert')
 describe('Trailpack', () => {
   let pack
   before(() => {
-    // pack = global.app.packs.waterline
+    pack = global.app.packs.mapnik
   })
   it.skip('TODO should be loaded into the app.packs collection', () => {
     assert(pack)
@@ -14,7 +14,10 @@ describe('Trailpack', () => {
     it.skip('TODO test')
   })
   describe('#configure', () => {
-    it.skip('TODO test')
+    it('should register default tilelive protocols (mapnik, bridge)', () => {
+      assert(pack.tl.protocols['mapnik:'])
+      assert(pack.tl.protocols['bridge:'])
+    })
   })
   describe('#initialize', () => {
     it.skip('TODO test')

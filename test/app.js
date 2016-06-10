@@ -19,6 +19,9 @@ module.exports = _.defaultsDeep({
         require('trailpack-core'),
         require('../')
       ]
+    },
+    log: {
+      logger: new smokesignals.Logger('debug')
     }
   }
 }, smokesignals.FailsafeConfig)

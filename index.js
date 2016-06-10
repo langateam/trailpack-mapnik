@@ -1,5 +1,6 @@
 'use strict'
 
+const assert = require('assert')
 const Trailpack = require('trailpack')
 const Tilelive = require('tilelive')
 
@@ -9,14 +10,16 @@ module.exports = class MapnikTrailpack extends Trailpack {
    * Check that the configured mapnik XML files exist, and appear valid.
    */
   validate () {
-
+    assert(this.app.config.mapnik)
+    assert(this.app.config.mapnik.maps)
   }
 
   /**
    * Register tilelive protocols
    */
   configure () {
-    this.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
+    this.log.debug('Registering tilelive protocols...')
+    this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
   }
 
   /**
@@ -24,17 +27,14 @@ module.exports = class MapnikTrailpack extends Trailpack {
    */
   initialize () {
     const maps = this.app.config.mapnik.maps
-    const sources = Object.keys(maps).map(mapName => {
-      const protocol = maps[mapName]
+    const sources = Object.keys(maps).map(name => {
+      const protocol = maps[name]
 
       return new Promise((resolve, reject) => {
         Tilelive.load(protocol, (err, source) => {
           if (err) return reject(err)
 
-          resolve({
-            name: mapName,
-            source
-          })
+          resolve({ name, source })
         })
       })
     })
@@ -45,6 +45,10 @@ module.exports = class MapnikTrailpack extends Trailpack {
           this[source.mapName] = source.source
         })
       })
+  }
+
+  get tl () {
+    return Tilelive
   }
 
   constructor (app) {
