@@ -2,12 +2,10 @@ language: node_js
 node_js:
   - 6
 
-addons:
-  apt:
-    packages:
-     - mapnik
-     - mapnik-utils
-     - mapnik-vector-tile
+before_install:
+  - sudo apt-get install mapnik
+  - sudo apt-get install mapnik-utils
+  - sudo apt-get install mapnik-vector-tile
 
 notifications:
   email: false
