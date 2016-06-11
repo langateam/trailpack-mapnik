@@ -3,9 +3,10 @@ node_js:
   - 6
 
 before_install:
-  - sudo apt-get install mapnik
-  - sudo apt-get install mapnik-utils
-  - sudo apt-get install mapnik-vector-tile
+  - sudo add-apt-repository ppa:mapnik/nightly-trunk
+  - sudo apt-get update
+  - sudo apt-get install libmapnik libmapnik-dev mapnik-utils python-mapnik
+  - sudo apt-get install mapnik-input-plugin-gdal mapnik-input-plugin-ogr mapnik-input-plugin-postgis mapnik-input-plugin-sqlite mapnik-input-plugin-osm
 
 notifications:
   email: false
