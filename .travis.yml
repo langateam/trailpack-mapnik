@@ -4,7 +4,7 @@ node_js:
 
 before_install:
   - sudo add-apt-repository ppa:mapnik/nightly-trunk -y
-  - sudo apt-get update
+  - sudo apt-get update -qq
   - sudo apt-get install libmapnik libmapnik-dev mapnik-utils python-mapnik -y
   - sudo apt-get install mapnik-input-plugin-gdal mapnik-input-plugin-ogr mapnik-input-plugin-postgis mapnik-input-plugin-sqlite mapnik-input-plugin-osm -y
 
