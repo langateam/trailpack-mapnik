@@ -2,6 +2,16 @@ language: node_js
 node_js:
   - 6
 
+compiler: clang
+
+addons:
+  apt:
+    sources:
+     - ubuntu-toolchain-r-test
+     - llvm-toolchain-precise-3.5
+    packages:
+     - clang-3.5
+
 before_install:
   - sudo add-apt-repository ppa:mapnik/nightly-trunk -y
   - sudo apt-get update -qq
