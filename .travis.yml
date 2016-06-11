@@ -2,6 +2,13 @@ language: node_js
 node_js:
   - 6
 
+addons:
+  apt:
+    packages:
+     - mapnik
+     - mapnik-utils
+     - mapnik-vector-tile
+
 notifications:
   email: false
 
