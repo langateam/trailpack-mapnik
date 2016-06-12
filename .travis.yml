@@ -2,18 +2,6 @@ language: node_js
 node_js:
   - 6
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-5
-      - g++-5
-
-env:
-  - COMPILER=g++-5
-  - CXX=g++-5
-
 before_install:
   - sudo add-apt-repository ppa:mapnik/nightly-trunk -y
   - sudo apt-get update -qq
