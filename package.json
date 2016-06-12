@@ -25,7 +25,8 @@
     "wms"
   ],
   "dependencies": {
-    "mapnik": "git@github.com:langateam/node-mapnik.git",
+    "mapnik": "langateam/node-mapnik",
+    "tilelive": "^5.12.2",
     "tilelive-bridge": "^2.3.1",
     "tilelive-mapnik": "^0.6.18",
     "trailpack": "latest",
