@@ -25,6 +25,7 @@
     "wms"
   ],
   "dependencies": {
+    "lodash.clonedeep": "^4.3.2",
     "mapnik": "langateam/node-mapnik",
     "tilelive": "^5.12.2",
     "tilelive-bridge": "^2.3.1",
