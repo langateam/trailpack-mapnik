@@ -1,6 +1,6 @@
 {
   "name": "trailpack-mapnik",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Mapnik Tile Server with Trails.js",
   "homepage": "http://trailsjs.io",
   "author": {
