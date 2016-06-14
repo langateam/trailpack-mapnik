@@ -5,7 +5,13 @@
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
 
-Setup a Map Server using [Trails](http://trailsjs.io) and [Mapnik](http://mapnik.org/).
+Setup a Map Server using [Trails](http://trailsjs.io), [Mapnik](http://mapnik.org/),
+and [Tilelive](https://github.com/mapbox/tilelive). Supports tile caching with [S3](https://aws.amazon.com/s3/).
+
+## Compatibility
+- Node 6 or higher
+- Mapnik 3.0.9 or higher (tested on 3.0.9)
+- OSX or Linux (binaries pre-built for `linux` and `darwin` platforms)
 
 ## Install
 
