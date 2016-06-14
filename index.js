@@ -43,6 +43,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
     this.sources = { }
     this.aws = { }
     aws.config = this.app.config.aws.config
+    //aws.config.logger = process.stdout
   }
 
   /**
