@@ -1,6 +1,8 @@
 'use strict'
 
 const Service = require('trails-service')
+const mapnik = require('mapnik')
+const mercator = require('sphericalmercator')
 
 /**
  * @module MapService
@@ -8,8 +10,39 @@ const Service = require('trails-service')
  */
 module.exports = class MapService extends Service {
 
-  getTile (source, { x, y, z }) {
+  /**
+   * @param source String mapnik source
+   * @param map.bbox Array The bounding box of the map (w, s, e, n)
+   * @param map.width Number The width of the output image in pixels
+   * @param map.height Number The height of the output image in pixels
+   */
+  getMap(source, { bbox: [ w, s, e, n], width, height }) {
+    const mapnikSource = this.app.packs.mapnik.sources[source]
+    const map = new mapnik.Map(parseInt(width), parseInt(height))
 
+    return new Promise((resolve, reject) => {
+      map.fromString(mapnikSource.xml, mapnikSource.options, (err, map) => {
+        if (err) return reject(err)
+
+        map.bufferSize = 256
+        map.extent = [ w, s, e, n ]
+
+        const image = new mapnik.Image(parseInt(width), parseInt(height))
+
+        map.render(image, (err, image) => {
+          if (err) return reject(err)
+
+          image.encode('png', (err, buffer) => {
+            if (err) return reject(err)
+
+            resolve({ buffer, headers: { 'Content-Type': 'image/png' } })
+          })
+        })
+      })
+    })
+  }
+
+  getTile (source, { x, y, z }) {
     return this.validateTileParameters(source, {x, y, z})
       .then(({x, y, z}) => {
         return this.downloadTile(source, {x, y, z})

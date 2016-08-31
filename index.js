@@ -3,8 +3,9 @@
 const assert = require('assert')
 const Trailpack = require('trailpack')
 const Tilelive = require('tilelive')
-const cloneDeep = require('lodash.clonedeep')
+const Mapnik = require('mapnik')
 const aws = require('aws-sdk')
+const lib = require('./lib')
 
 module.exports = class MapnikTrailpack extends Trailpack {
 
@@ -17,23 +18,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
     assert(this.app.config.mapnik.protocols)
 
     this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
-
-    return Promise.all(Object.keys(this.app.config.mapnik.maps).map(name => {
-      const protocol = this.app.config.mapnik.maps[name]
-      return new Promise((resolve, reject) => {
-        Tilelive.info(protocol, (err, info) => {
-          this.log.silly('Tile source [', name, '] info:', info)
-          const errors = Tilelive.verify(info)
-
-          if (err) return reject(err)
-          if (errors && errors.length) {
-            return reject(new Error(`Tile source [${name}] invalid: ${errors}`))
-          }
-
-          resolve(info)
-        })
-      })
-    }))
+    return lib.Tilelive.validateTileSources(this.app.config.mapnik.maps)
   }
 
   /**
@@ -43,7 +28,9 @@ module.exports = class MapnikTrailpack extends Trailpack {
     this.sources = { }
     this.aws = { }
     aws.config = this.app.config.aws.config
-    //aws.config.logger = process.stdout
+
+    Mapnik.register_default_fonts()
+    Mapnik.register_default_input_plugins()
   }
 
   /**
@@ -57,28 +44,13 @@ module.exports = class MapnikTrailpack extends Trailpack {
       this.app.services.AWSService[service] = new aws[service]()
     })
 
-
     this.log.debug('Registering tilelive protocols...')
     this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
 
-    const maps = this.app.config.mapnik.maps
-    const sources = Object.keys(maps).map(name => {
-      const protocol = maps[name]
-
-      return new Promise((resolve, reject) => {
-        this.log.debug('Loading tilelive map source', name, '...')
-        Tilelive.load(cloneDeep(protocol), (err, source) => {
-          if (err) return reject(err)
-
-          this.log.info('source loaded')
-
-          this.sources[name] = source
-          resolve()
-        })
-      })
-    })
-
-    return Promise.all(sources)
+    return Promise.all([
+      lib.Tilelive.loadTileSources(this.app.config.mapnik.maps, this),
+      lib.Mapnik.loadXml(this.app.config.mapnik.maps, this)
+    ])
   }
 
   get tl () {
