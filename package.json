@@ -25,7 +25,8 @@
     "wms"
   ],
   "dependencies": {
-    "aws-sdk": "^2.3.19",
+    "aws-sdk": "2.3.19",
+    "lodash": "^4.15.0",
     "lodash.clonedeep": "^4.3.2",
     "mapnik": "langateam/node-mapnik",
     "tilelive": "^5.12.2",
