@@ -15,6 +15,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
   validate () {
     assert(this.app.config.mapnik)
     assert(this.app.config.mapnik.maps)
+    assert(this.app.config.mapnik.modules)
 
     this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
     return lib.Tilelive.validateTileSources(this.app.config.mapnik.maps)

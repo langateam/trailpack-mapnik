@@ -2,7 +2,7 @@ module.exports = {
   maps: {
 
   },
-  protocols: [
+  modules: [
     require('tilelive-mapnik'),
     require('tilelive-bridge')
   ],

@@ -17,12 +17,21 @@ module.exports = _.defaultsDeep({
       packs: [
         smokesignals.Trailpack,
         require('trailpack-core'),
-        require('../')
+        require('../')  // trailpack-mapnik
       ]
     },
     log: {
       logger: new smokesignals.Logger('debug')
+    },
+    mapnik: {
+      maps: {
+
+      },
+      modules: [
+
+      ]
     }
+
   }
 }, smokesignals.FailsafeConfig)
 
