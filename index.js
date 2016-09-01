@@ -15,7 +15,6 @@ module.exports = class MapnikTrailpack extends Trailpack {
   validate () {
     assert(this.app.config.mapnik)
     assert(this.app.config.mapnik.maps)
-    assert(this.app.config.mapnik.protocols)
 
     this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
     return lib.Tilelive.validateTileSources(this.app.config.mapnik.maps)
@@ -44,8 +43,8 @@ module.exports = class MapnikTrailpack extends Trailpack {
       this.app.services.AWSService[service] = new aws[service]()
     })
 
-    this.log.debug('Registering tilelive protocols...')
-    this.app.config.mapnik.protocols.forEach(plugin => plugin.registerProtocols(Tilelive))
+    this.log.debug('Registering tilelive modules...')
+    this.app.config.mapnik.modules.forEach(plugin => plugin.registerProtocols(Tilelive))
 
     return Promise.all([
       lib.Tilelive.loadTileSources(this.app.config.mapnik.maps, this),
