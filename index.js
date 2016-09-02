@@ -18,7 +18,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
     assert(this.app.config.mapnik.modules)
 
     this.app.config.mapnik.modules.forEach(plugin => plugin.registerProtocols(Tilelive))
-    return lib.Tilelive.validateTileSources(this.app.config.mapnik.maps)
+    //return lib.Tilelive.validateTileSources(this.app.config.mapnik.maps)
   }
 
   /**
@@ -51,6 +51,20 @@ module.exports = class MapnikTrailpack extends Trailpack {
       lib.Tilelive.loadTileSources(this.app.config.mapnik.maps, this),
       lib.Mapnik.loadXml(this.app.config.mapnik.maps, this)
     ])
+  }
+
+  /**
+   * Close down the tilelive sources. clears tilecache and destroys the pool.
+   */
+  unload () {
+    return Promise.all(
+      Object.keys(this.sources).map(sourceName => {
+        return new Promise((resolve, reject) => {
+          this.log.debug('trailpack-tilelive: closing tilelive source', sourceName)
+          const source = this.sources[sourceName]
+          source.close(resolve)
+        })
+      }))
   }
 
   get tl () {
