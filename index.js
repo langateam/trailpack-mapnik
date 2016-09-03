@@ -7,6 +7,14 @@ const Mapnik = require('mapnik')
 const aws = require('aws-sdk')
 const lib = require('./lib')
 
+// support runtime override of MAPNIK_INPUT_PLUGINS and MAPNIK_FONTS paths
+if (process.env.MAPNIK_INPUT_PLUGINS) {
+  Mapnik.settings.paths.input_plugins = process.env.MAPNIK_INPUT_PLUGINS
+}
+if (process.env.MAPNIK_FONTS) {
+  Mapnik.settings.paths.fonts = process.env.MAPNIK_FONTS
+}
+
 module.exports = class MapnikTrailpack extends Trailpack {
 
   /**
@@ -16,8 +24,6 @@ module.exports = class MapnikTrailpack extends Trailpack {
     assert(this.app.config.mapnik)
     assert(this.app.config.mapnik.maps)
     assert(this.app.config.mapnik.modules)
-
-    this.app.config.mapnik.modules.forEach(plugin => plugin.registerProtocols(Tilelive))
     //return lib.Tilelive.validateTileSources(this.app.config.mapnik.maps)
   }
 
