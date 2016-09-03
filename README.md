@@ -55,6 +55,12 @@ module.exports = {
 }
 ```
 
+## License
+MIT
+
+## Maintained By
+[<img src='http://i.imgur.com/Y03Jgmf.png' height='64px'>](https://langa.io)
+
 [npm-image]: https://img.shields.io/npm/v/trailpack-mapnik.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trailpack-mapnik
 [ci-image]: https://img.shields.io/travis/langateam/trailpack-mapnik/master.svg?style=flat-square
