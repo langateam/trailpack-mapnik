@@ -19,11 +19,11 @@ module.exports = class MapService extends Service {
    * @param map.height Number The height of the output image in pixels
    */
   getMap(source, { bbox: [ w, s, e, n], width, height }) {
-    const mapnikSource = this.app.packs.mapnik.sources[source]
+    const configFile = this.app.config.mapnik.maps[source].pathname
     const map = new mapnik.Map(parseInt(width), parseInt(height))
 
     return new Promise((resolve, reject) => {
-      map.fromString(mapnikSource.xml, (err, map) => {
+      map.load(configFile, (err, map) => {
         if (err) {
           this.log.warn(err)
           return reject(err)
