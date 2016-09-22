@@ -2,7 +2,9 @@
 
 const Service = require('trails-service')
 const mapnik = require('mapnik')
-//const mercator = require('sphericalmercator')
+
+
+mapnik.Logger.setSeverity(mapnik.Logger.DEBUG)
 
 /**
  * @module MapService
@@ -21,17 +23,21 @@ module.exports = class MapService extends Service {
     const map = new mapnik.Map(parseInt(width), parseInt(height))
 
     return new Promise((resolve, reject) => {
-      map.fromString(mapnikSource.xml, mapnikSource.options, (err, map) => {
-        if (err) return reject(err)
+      map.fromString(mapnikSource.xml, (err, map) => {
+        if (err) {
+          this.log.warn(err)
+          return reject(err)
+        }
 
-        map.bufferSize = 256
         map.extent = [ w, s, e, n ]
 
         const image = new mapnik.Image(parseInt(width), parseInt(height))
 
-        map.render(image, (err, image) => {
+        this.log.debug(`MapService.getMap RENDERING src=${source} w=${width} h=${height}`)
+        map.render(image, { scale: 1, buffer_size: 1 }, (err, image) => {
           if (err) return reject(err)
 
+          this.log.debug(`MapService.getMap ENCODING IMAGE src=${source} w=${width} h=${height}`)
           image.encode('png', (err, buffer) => {
             if (err) return reject(err)
 

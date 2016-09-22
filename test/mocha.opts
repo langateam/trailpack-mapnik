@@ -6,3 +6,4 @@
 --check-leaks
 --globals app
 --fgrep app.js --invert
+--timeout 60000

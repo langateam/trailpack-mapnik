@@ -57,6 +57,10 @@ module.exports = class MapnikTrailpack extends Trailpack {
       lib.Tilelive.loadTileSources(this.app.config.mapnik.maps, this),
       lib.Mapnik.loadXml(this.app.config.mapnik.maps, this)
     ])
+    .catch(err => {
+      this.log.warn('trailpack-mapnik:', err)
+      throw err
+    })
   }
 
   /**
