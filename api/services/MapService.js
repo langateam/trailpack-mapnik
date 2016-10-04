@@ -58,7 +58,9 @@ module.exports = class MapService extends Service {
 
         return this.renderTile(source, {x, y, z})
           .then(tile => {
-            this.uploadTile(source, {x, y, z}, tile)
+            // async. do not wait for tile upload. return immediately
+            process.nextTick(() => this.uploadTile(source, {x, y, z}, tile))
+
             return tile
           })
       })
