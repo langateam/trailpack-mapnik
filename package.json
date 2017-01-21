@@ -25,13 +25,12 @@
     "wms"
   ],
   "dependencies": {
+    "@langa/mapnik": "latest",
+    "@langa/tilelive-mapnik": "latest",
     "aws-sdk": "2.3.19",
     "lodash": "^4.15.0",
     "lodash.clonedeep": "^4.3.2",
-    "@langa/mapnik": "latest",
     "tilelive": "^5.12.2",
-    "tilelive-bridge": "^2.3.1",
-    "@langa/tilelive-mapnik": "latest",
     "trailpack": "latest",
     "trails-service": "^1.0.0-beta-2"
   },
