@@ -31,7 +31,7 @@
     "mapnik": "^3.5.14",
     "tilelive": "^5.12.2",
     "tilelive-bridge": "^2.3.1",
-    "tilelive-mapnik": "^0.6.18",
+    "@langa/tilelive-mapnik": "latest",
     "trailpack": "latest",
     "trails-service": "^1.0.0-beta-2"
   },

@@ -53,14 +53,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
     this.log.debug('Registering tilelive modules...')
     this.app.config.mapnik.modules.forEach(plugin => plugin.registerProtocols(Tilelive))
 
-    return Promise.all([
-      lib.Tilelive.loadTileSources(this.app.config.mapnik.maps, this),
-      lib.Mapnik.loadXml(this.app.config.mapnik.maps, this)
-    ])
-    .catch(err => {
-      this.log.warn('trailpack-mapnik:', err)
-      throw err
-    })
+    return lib.Tilelive.loadTileSources(this.app.config.mapnik.maps, this)
   }
 
   /**
