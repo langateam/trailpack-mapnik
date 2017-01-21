@@ -1,7 +1,7 @@
 'use strict'
 
 const Service = require('trails-service')
-const mapnik = require('mapnik')
+const mapnik = require('@langa/mapnik')
 
 
 mapnik.Logger.setSeverity(mapnik.Logger.DEBUG)

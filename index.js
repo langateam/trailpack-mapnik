@@ -3,7 +3,7 @@
 const assert = require('assert')
 const Trailpack = require('trailpack')
 const Tilelive = require('tilelive')
-const Mapnik = require('mapnik')
+const Mapnik = require('@langa/mapnik')
 const aws = require('aws-sdk')
 const lib = require('./lib')
 
