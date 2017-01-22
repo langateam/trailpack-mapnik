@@ -3,7 +3,6 @@ module.exports = {
 
   },
   modules: [
-    require('tilelive-mapnik')
   ],
   s3cache: {
     basemap: {
