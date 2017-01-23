@@ -13,10 +13,9 @@ describe('Trailpack', () => {
   describe('#validate', () => {
     it.skip('TODO test')
   })
-  describe('#configure', () => {
-    it('should register default tilelive protocols (mapnik, bridge)', () => {
+  describe('#initialize', () => {
+    it('should register default tilelive protocols (mapnik)', () => {
       assert(pack.tl.protocols['mapnik:'])
-      assert(pack.tl.protocols['bridge:'])
     })
   })
   describe('#initialize', () => {

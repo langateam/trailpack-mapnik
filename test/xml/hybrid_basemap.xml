@@ -1,0 +1,57 @@
+<Map srs="+init=epsg:3857" background-color="#ffffffff">
+  <Parameters>
+    <Parameter name="format">png8</Parameter>
+    <Parameter name="tileSize">512</Parameter>
+    <Parameter name="width">512</Parameter>
+    <Parameter name="height">512</Parameter>
+    <Parameter name="minzoom">2</Parameter>
+    <Parameter name="maxzoom">18</Parameter>
+  </Parameters>
+
+  <Style name="aerial_raster_1ft">
+    <Rule>
+      <MaxScaleDenominator>20000</MaxScaleDenominator>
+      <MinScaleDenominator>12000</MinScaleDenominator>
+      <RasterSymbolizer opacity="0.60" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>12000</MaxScaleDenominator>
+      <MinScaleDenominator>6000</MinScaleDenominator>
+      <RasterSymbolizer opacity="0.75" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>6000</MaxScaleDenominator>
+      <MinScaleDenominator>4000</MinScaleDenominator>
+      <RasterSymbolizer opacity="0.90" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>4000</MaxScaleDenominator>
+      <RasterSymbolizer opacity="1.0" />
+    </Rule>
+  </Style>
+
+  <Style name="basemap" image-filters="color-to-alpha(#fff)">
+    <Rule>
+      <RasterSymbolizer opacity="1.0" />
+    </Rule>
+  </Style>
+
+  <!--
+  <Layer name="imagery_layer" srs="+init=epsg:3857">
+    <StyleName>aerial_raster_1ft</StyleName>
+    <Datasource>
+      <Parameter name="type">gdal</Parameter>
+      <Parameter name="file">gdal_wms_nm_orthoimagery_1ft.xml</Parameter>
+    </Datasource>
+  </Layer>
+  -->
+
+  <Layer name="streets_layer" srs="+init=epsg:3857">
+    <StyleName>basemap</StyleName>
+    <Datasource>
+      <Parameter name="type">gdal</Parameter>
+      <Parameter name="file">gdal_osm_basemap_cache.xml</Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

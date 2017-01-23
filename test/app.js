@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path')
 const _ = require('lodash')
 const smokesignals = require('smokesignals')
 
@@ -15,8 +16,6 @@ module.exports = _.defaultsDeep({
   config: {
     main: {
       packs: [
-        smokesignals.Trailpack,
-        require('trailpack-core'),
         require('../')  // trailpack-mapnik
       ]
     },
@@ -25,10 +24,19 @@ module.exports = _.defaultsDeep({
     },
     mapnik: {
       maps: {
-
+        testmap: {
+          protocol: 'mapnik:',
+          pathname: path.resolve(__dirname, 'xml/hybrid_basemap.xml'),
+          query: {
+            tileSize: 512,
+            minzoom: 2,
+            maxzoom: 18,
+            internal_cache: false
+          }
+        }
       },
       modules: [
-
+        require('@langa/tilelive-mapnik')
       ]
     }
 

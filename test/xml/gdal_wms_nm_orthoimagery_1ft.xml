@@ -1,0 +1,45 @@
+<GDAL_WMS>
+
+  <Service name="TMS">
+    <ServerUrl>http://d1gs2ejst5lc1o.cloudfront.net/imagery/${z}/${x}/${y}.png</ServerUrl>
+    <SRS>EPSG:3857</SRS>
+    <Format>png</Format>
+    <ImageFormat>image/png</ImageFormat>
+    <Transparent>TRUE</Transparent>
+  </Service>
+
+  <DataWindow>
+    <UpperLeftX>-20037508.34</UpperLeftX>
+    <LowerRightX>20037508.34</LowerRightX>
+    <UpperLeftY>20037508.34</UpperLeftY>
+    <LowerRightY>-20037508.34</LowerRightY>
+
+    <TileLevel>19</TileLevel>
+    <TileCountX>1</TileCountX>
+    <TileCountY>1</TileCountY>
+    <YOrigin>top</YOrigin>
+  </DataWindow>
+
+  <Projection>EPSG:3857</Projection>
+  <BlockSizeX>512</BlockSizeX>
+  <BlockSizeY>512</BlockSizeY>
+  <BandsCount>3</BandsCount>
+  <MaxConnections>32</MaxConnections>
+  <AdviseRead>true</AdviseRead>
+  <VerifyAdviseRead>true</VerifyAdviseRead>
+
+  <!--
+  <Cache>
+    <Path>.tmp/gdal/ortho</Path>
+    <Depth>2</Depth>
+    <Extension>.jpg</Extension>
+  </Cache>
+  -->
+
+  <UnsafeSSL>true</UnsafeSSL>
+  <!--
+  <ZeroBlockHttpCodes>204,403,404,500,502,503,504</ZeroBlockHttpCodes>
+  <ZeroBlockOnServerException>true</ZeroBlockOnServerException>
+  -->
+
+</GDAL_WMS>

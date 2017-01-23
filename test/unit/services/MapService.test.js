@@ -14,7 +14,7 @@ describe('MapService', () => {
 
   describe('#getMap', () => {
     it('should render a map image', () => {
-      return MapService.getMap({ }, {
+      return MapService.getMap('testmap', {
         bbox: [
           -13184317.9862114,
           4045438.96941211,
@@ -25,7 +25,7 @@ describe('MapService', () => {
         height: 240
       })
       .then(result => {
-        console.log('result')
+        assert(result)
       })
     })
   })

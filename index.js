@@ -47,6 +47,7 @@ module.exports = class MapnikTrailpack extends Trailpack {
     this.log.info('Instantiating AWS Services', awsServices, '...')
 
     awsServices.forEach(service => {
+      console.log(this.app.services.AWSService)
       this.app.services.AWSService[service] = new aws[service]()
     })
 

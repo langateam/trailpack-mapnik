@@ -31,17 +31,15 @@
     "lodash": "^4.15.0",
     "lodash.clonedeep": "^4.3.2",
     "tilelive": "^5.12.2",
-    "trailpack": "latest",
-    "trails-service": "^1.0.0-beta-2"
+    "trailpack": "^2"
   },
   "devDependencies": {
     "lodash": "^4.11.1",
-    "trails": "latest",
+    "trails": "^2",
     "eslint": "^2.4",
-    "eslint-config-trails": "^1.0.4",
+    "eslint-config-trails": "^2",
     "mocha": "^2.4.5",
-    "smokesignals": "^1.0.9",
-    "trailpack-core": "^1.0.0-beta-6"
+    "smokesignals": "^1.0.9"
   },
   "scripts": {
     "test": "eslint . && mocha"
@@ -52,6 +50,6 @@
   "eslintConfig": {
     "extends": "trails"
   },
-  "repository": "trailsjs/trailpack-mapnik",
+  "repository": "langateam/trailpack-mapnik",
   "license": "MIT"
 }
